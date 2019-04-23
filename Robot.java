@@ -18,11 +18,11 @@
 class Robot {
 
     //Intro Fields:
-    String  name;
-    String  color;
-    Spot    location;
-    String  facingDirection;
-    Integer numberOfMoves;
+    String   name;
+    String   color;
+    Spot     location;
+    String   facingDirection;
+    Integer  numberOfMoves;
 
     public Robot(String name, String color, Spot location, String facingDirection, Integer numberofMoves) {
 
@@ -34,8 +34,30 @@ class Robot {
 
     }
 
-    public void turnRight() {
+    public void turnRight(String facingDir) {
 
+        // Switch case to set @param facingDirection
+        switch (facingDir) {
+            case "Right":
+                this.facingDirection = "Down";
+                break;
+            
+            case "Down":
+                this.facingDirection = "Left";
+                break;
+
+            case "Left":
+                this.facingDirection = "Up";
+                break;
+
+            case "Up":
+                this.facingDirection = "Right";
+                break;
+            
+            default:
+                System.out.println("IMPOSSIBLE!");
+                break;
+        }
         
     }
 }
