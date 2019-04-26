@@ -21,23 +21,29 @@ class Robot {
     String   name;
     String   color;
     Spot     location;
+    Spot     previousLocation;
     String   facingDirection;
     Integer  numberOfMoves;
+    Map      map;
 
-    public Robot(String name, String color, Spot location, String facingDirection, Integer numberofMoves) {
+    // Constructor:
+    public Robot(String name, String color, Spot location, String facingDirection, Integer numberofMoves, Map map) {
+
+        // Set Fields:
 
         this.name = name;
         this.color = color;
         this.location = location;
         this.facingDirection = facingDirection;
         this.numberOfMoves = numberofMoves;
+        this.map = map;
 
     }
 
-    public void turnRight(String facingDir) {
+    public void turnRight() { // turnRight() function
 
         // Switch case to set @param facingDirection
-        switch (facingDir) {
+        switch (this.facingDirection) {
             case "Right":
                 this.facingDirection = "Down";
                 break;
@@ -55,8 +61,41 @@ class Robot {
                 break;
             
             default:
-                System.out.println("IMPOSSIBLE!");
+                System.out.println("Direction IMPOSSIBLE!");
                 break;
+        }
+        
+    }
+
+    public void move() { // move() function
+        
+        // Store the current location as @param previousLocation
+        this.previousLocation = this.location;
+
+        try {
+            switch (this.facingDirection) {
+                case "Right":
+                    this.location = map.findSpot(this.location.y, this.location.x+1);
+                    break;
+                
+                case "Down":
+                    this.location = map.findSpot(this.location.y+1, this.location.x);
+                    break;
+    
+                case "Left":
+                    this.location = map.findSpot(this.location.y, this.location.x-1);
+                    break;
+    
+                case "Up":
+                    this.location = map.findSpot(this.location.y-1, this.location.x);
+                    break;
+                
+                default:
+                    System.out.println("Direction IMPOSSIBLE!");
+                    break;
+            }
+        } catch (Exception e) {
+            System.out.println("Reached a BORDER!");
         }
         
     }

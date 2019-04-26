@@ -102,12 +102,15 @@ class mainApp {
 
                 try {
                     System.out.println("sym: " + j.symbol + " - y: " + j.y + " - x: " + j.x + " - left: " + map[j.y][j.x-1].symbol);
+                    
                 } catch (Exception e) {
                     System.out.println("sym: " + j.symbol + " - y: " + j.y + " - x: " + j.x);
                 }
             }
             
         }
+
+
         prtwriter.close();
         scanner.close();
         //System.out.println(map[numberOfLines-1][numberOfChars-1].symbol);
