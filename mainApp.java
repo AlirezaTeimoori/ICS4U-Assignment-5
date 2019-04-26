@@ -45,11 +45,52 @@ class mainApp {
         numberOfChars = reader.readLine().toCharArray().length; reader.close(); // Close the reader
 
         // Create the map array:
-        Spot [][] map = new Spot[numberOfLines][numberOfChars];
+        Spot map [][] = new Spot[numberOfLines][numberOfChars];
 
-        while (reader.readLine() != null) {
+        // Reopen the reader:
+        reader = new BufferedReader(new FileReader("./Test Cases/Test 1.txt"));
+        
+        String line;
+        int thisLine = 0;
+
+        while ((line = reader.readLine()) != null) {
             
+            String lineArray[] = line.split("");
+            for (int i = 0; i <= numberOfChars-1; i++) {
+                map[thisLine][i] = new Spot(lineArray[i],thisLine,i);
+                //map[thisLine][i].symbol = lineArray[i];
+            }
+            thisLine++;
         }
+
+        
+        for (Spot[] spotArray : map) {
+            for (Spot spot : spotArray) {
+                try {
+                    spot.setUp(map[spot.y-1][spot.x]);
+                } catch (Exception e) {
+                    System.out.println("no Up!");
+                }
+                try {
+                    spot.setRight(map[spot.y][spot.x+1]);
+                } catch (Exception e) {
+                    System.out.println("no Right!");
+                }
+                try {
+                    spot.setDown(map[spot.y+1][spot.x]);
+                } catch (Exception e) {
+                    System.out.println("no Down!");
+                }
+                try {
+                    spot.setLeft(map[spot.y][spot.x-1]);
+                } catch (Exception e) {
+                    System.out.println("no Left!");
+                }
+            }
+            
+
+        }
+
 
 
 
@@ -58,11 +99,17 @@ class mainApp {
         System.out.println("NOC: " + numberOfChars);
         for (Spot[] i: map) {
             for (Spot j: i) {
-                System.out.println(j);
+
+                try {
+                    System.out.println("sym: " + j.symbol + " - y: " + j.y + " - x: " + j.x + " - left: " + map[j.y][j.x-1].symbol);
+                } catch (Exception e) {
+                    System.out.println("sym: " + j.symbol + " - y: " + j.y + " - x: " + j.x);
+                }
             }
             
         }
         prtwriter.close();
         scanner.close();
+        //System.out.println(map[numberOfLines-1][numberOfChars-1].symbol);
     }
 }

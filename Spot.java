@@ -34,6 +34,22 @@ class Spot {
         this.count  = 0;
     }
 
+    public void setUp(Spot up) {
+        this.up = up;
+    }
+
+    public void setRight(Spot right) {
+        this.right = right;
+    }
+
+    public void setDown(Spot down) {
+        this.down = down;
+    }
+
+    public void setLeft(Spot left) {
+        this.left = left;
+    }
+
     public String info() {
 
         // Create output variable:
