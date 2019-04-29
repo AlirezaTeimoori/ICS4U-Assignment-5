@@ -75,7 +75,35 @@ class Robot {
 
     public void decide() {
         
-        
+        String nextBlock = check();
+
+        try {
+
+            switch (nextBlock) {
+
+                case "#": // If there is a wall
+
+                    System.out.println("Faced wall or Border! Turning Right!");
+                    turnRight();
+                    break;
+                    
+                case ".": // If the way is open
+                case "+":
+                case "S":
+                
+                    System.out.println("Way is open! Moving Ahead!");
+                    move();
+                    break;
+                
+                default: // If nothing worked!
+
+                    System.out.println("CHECK: Direction IMPOSSIBLE!");
+
+                }
+        } catch (Exception e) { // If reached a border
+            System.out.println("CHECK: Reached a BORDER!");
+            turnRight();
+        }
         
     }
 

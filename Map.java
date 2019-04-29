@@ -20,10 +20,13 @@ class Map {
 
     // Intro Fields:
     Spot[][] mapArray;
+    Spot startPoint;
+    Spot endPoint;
 
     public Map (Spot[][] array) {
 
         this.mapArray = array;
+        
     }
 
     public Spot findSpot(int y, int x) {
