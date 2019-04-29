@@ -40,6 +40,45 @@ class Robot {
 
     }
 
+    // Check() function:
+    public String check() {
+
+        try {
+            switch (this.facingDirection) {
+                case "Right":
+
+                    return map.findSpot(this.location.y, this.location.x+1).symbol;
+                
+                case "Down":
+
+                    return map.findSpot(this.location.y+1, this.location.x).symbol;
+    
+                case "Left":
+
+                    return map.findSpot(this.location.y, this.location.x-1).symbol;
+    
+                case "Up":
+
+                    return map.findSpot(this.location.y-1, this.location.x).symbol;
+                
+                default:
+
+                    System.out.println("CHECK: Direction IMPOSSIBLE!");
+                    return "error";
+
+                }
+        } catch (Exception e) {
+            System.out.println("CHECK: Reached a BORDER!");
+            return "error";
+        }
+    }
+
+    public void decide() {
+        
+        
+        
+    }
+
     public void turnRight() { // turnRight() function
 
         // Switch case to set @param facingDirection
@@ -61,7 +100,7 @@ class Robot {
                 break;
             
             default:
-                System.out.println("Direction IMPOSSIBLE!");
+                System.out.println("TURN: Direction IMPOSSIBLE!");
                 break;
         }
         
@@ -91,11 +130,11 @@ class Robot {
                     break;
                 
                 default:
-                    System.out.println("Direction IMPOSSIBLE!");
+                    System.out.println("MOVE: Direction IMPOSSIBLE!");
                     break;
             }
         } catch (Exception e) {
-            System.out.println("Reached a BORDER!");
+            System.out.println("MOVE: Reached a BORDER!");
         }
         
     }
