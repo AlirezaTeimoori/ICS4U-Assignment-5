@@ -33,7 +33,7 @@ class Map {
     static PrintWriter prtwriter;
     static {
         try {
-            filereader = new FileReader("./Test Cases/Test 1.txt");
+            filereader = new FileReader("./Test Cases/Test 2.txt");
             reader = new BufferedReader(filereader);
             filewriter = new FileWriter("./Test Cases/Test 1 OUTPUT.txt");
             prtwriter = new PrintWriter(filewriter);
@@ -61,7 +61,7 @@ class Map {
         int thisLine = 0;
 
         // Reopen the reader:
-        reader = new BufferedReader(new FileReader("./Test Cases/Test 1.txt"));
+        reader = new BufferedReader(new FileReader("./Test Cases/Test 2.txt"));
 
         // Add the spots to the array
         while ((line = reader.readLine()) != null) {
@@ -114,13 +114,13 @@ class Map {
         while (reader.readLine() != null) this.numberOfLines++; reader.close(); // Close the reader
 
         // Reopen the reader:
-        reader = new BufferedReader(new FileReader("./Test Cases/Test 1.txt"));
+        reader = new BufferedReader(new FileReader("./Test Cases/Test 2.txt"));
 
         // Count number of chars in line
         this.numberOfChars = reader.readLine().toCharArray().length; reader.close(); // Close the reader
     }
 
-    public void setStartEnd() {
+    public void setStartEnd() throws IOException{
 
         for (Spot[] spotArray : this.mapArray) {
 

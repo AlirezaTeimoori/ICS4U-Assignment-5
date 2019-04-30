@@ -45,6 +45,7 @@ class mainApp {
 
     static Map map = new Map();
     static Robot bot;
+    static boolean solved = false;
 
     public static void main(String[] args) throws IOException {
         
@@ -54,51 +55,71 @@ class mainApp {
         map.setStartEnd();
 
         // Cunstruct the robot object:
-        bot = new Robot("bot", "red", map.mapArray[0][0], "Right", 0, map);
+        bot = new Robot("bot", "red", map.startPoint, "Right", 0, map);
     
         // // Check:
         // prtwriter.println("done!");
         // System.out.println("NOL: " + map.numberOfLines);
         // System.out.println("NOC: " + map.numberOfChars);
 
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-        bot.decide();
-   
 
+   
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+        bot.decide();
+
+
+        
 
 
         

@@ -86,9 +86,19 @@ class Robot {
             switch (nextBlock) {
 
                 case "#": // If there is a wall
+                case "x":
 
                     System.out.println("Faced wall or Border! Turning Right!");
-                    //if ( )
+
+                    if (this.lastMove == this.secondLastMove && this.lastMove == "Turn Right") {
+
+                        System.out.println("This is the second border! facing back!");
+                        turnRight();
+                        turnRight();
+                        this.lastMove = "Turn Right";
+                        this.secondLastMove = null;
+                        break;
+                    }
                     turnRight();
                     
                     break;
@@ -97,60 +107,58 @@ class Robot {
                 case "S":
                 
                     System.out.println("Way is open! Moving Ahead!");
+                    map.findSpot(this.location.y, this.location.x).symbol = "+";
                     move();
                     break;
                 
                 case "+":
 
-                    
+                    map.findSpot(this.location.y, this.location.x).symbol = "+";
                     int count = map.findSpot(this.location.y, this.location.x).count;
                     if ( count < 1) {
-
+                        map.findSpot(this.location.y, this.location.x).count++;
                         System.out.println("count of Spot (" + this.location.symbol + ") is: " + this.location.count);
-                        System.out.println("Faced previous spot! But Still Moving Ahead!");
-                        move();
+                        System.out.println("First Time! TURN RIGHT!");
+                        turnRight();
                         break;
 
                     } else if (count < 2) {
-
-                        // if (this.lastMove == this.secondLastMove && this.lastMove == "Turn Right") {
-
-                        //     System.out.println("Faced PPPpreviousSSS spot! Turning Right Twice!");
-                        //     turnRight();
-                        //     turnRight();
-                        //     this.lastMove = null;
-                        //     this.secondLastMove = null;
-                        //     break;
-                        // }
-
-                        System.out.println("Faced PPPPrevious spot! Turning LEFT!!");
-                        turnRight();
-                        turnRight();
-                        turnRight();
-
-                    } else {
-
-                        System.out.println("Faced PPPPrevious spot! Turning Right!");
-                        turnRight();
-
+                        map.findSpot(this.location.y, this.location.x).count++;
+                        System.out.println("Second Time! MOVE!");
+                        //map.findSpot(this.location.y, this.location.x).symbol = "x";
+                        move();
                         break;
-                    }               
+                    } else {
+                        System.out.println("x making now!");
+                        map.findSpot(this.location.y, this.location.x).symbol = "x";
+                        move();
+                        break;
+                    }            
 
 
                 default: // If nothing worked!
 
-                    System.out.println("CHECK: Direction IMPOSSIBLE!");
+                    System.out.println("D: Direction IMPOSSIBLE!");
+                    turnRight();
+                    turnRight();
+                    turnRight();
 
                 }
 
         } catch (Exception e) { // If reached a border
 
-            System.out.println("CHECK: Reached a BORDER!");
+            System.out.println("D: Reached a BORDER!");
             turnRight();
 
         }
         
         map.toString();
+        if (mainApp.solved = checkWin() == true) {
+            System.out.println("You WIN!!!!!!!!!!!");
+            return;
+        }
+        //decide();
+
     }
 
     public void turnRight() { // turnRight() function
@@ -201,7 +209,7 @@ class Robot {
         
         // Store the current location as @param previousLocation
         this.previousLocation = this.location;
-        map.findSpot(this.location.y, this.location.x).symbol = "+";
+        
 
         // Change the @param location based on the direction the robot is facing:
         try {
@@ -237,9 +245,27 @@ class Robot {
         } catch (Exception e) { // If there was an exception:
 
             System.out.println("MOVE: Reached a BORDER!");
+            turnRight();
 
         }
         
+    }
+
+    public boolean checkWin() {
+        
+        if (this.location == map.endPoint.left ||
+            this.location == map.endPoint.up ||
+            this.location == map.endPoint.right ||
+            this.location == map.endPoint.down) {
+
+                return true;
+
+        } else {
+
+            return false;
+
+        }
+
     }
 
     public String toString() {
