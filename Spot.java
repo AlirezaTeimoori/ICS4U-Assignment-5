@@ -50,7 +50,7 @@ class Spot {
         this.left = left;
     }
 
-    public String info() {
+    public String toString() {
 
         // Create output variable:
         String output = "";
@@ -59,10 +59,10 @@ class Spot {
         output += "\nSymbol: " +             this.symbol;
         output += "\nY-axis: " +             this.y + " (on line " + (this.y+1) + ")";
         output += "\nX-axis: " +             this.x + " (on char " +   this.x   + ")";
-        output += "\nSpot above: (" +        this.up.symbol    +                  ")";
-        output += "\nSpot below: (" +        this.down.symbol  +                  ")";
-        output += "\nSpot to the left:  (" + this.left.symbol  +                  ")";
-        output += "\nSpot to the right: (" + this.right.symbol +                  ")";
+        if (this.up != null) { output += "\nSpot above: (" +        this.up.symbol    +                  ")";}
+        if (this.down != null) { output += "\nSpot below: (" +        this.down.symbol  +                  ")";}
+        if (this.left != null) { output += "\nSpot to the left:  (" + this.left.symbol  +                  ")";}
+        if (this.right != null) { output += "\nSpot to the right: (" + this.right.symbol +                  ")";}
 
         // For sake of tidyness:
         output += "\n";
