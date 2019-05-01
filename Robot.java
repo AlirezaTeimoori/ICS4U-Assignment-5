@@ -17,15 +17,15 @@
 class Robot {
 
     //Intro Fields:
-    String   name;
-    String   color;
-    Spot     location;
-    Spot     previousLocation;
-    String   facingDirection;
-    Integer  numberOfMoves;
-    String   lastMove;
-    String   secondLastMove;
-    Map      map;
+    protected String   name;
+    protected String   color;
+    protected Spot     location;
+    protected Spot     previousLocation;
+    protected String   facingDirection;
+    protected Integer  numberOfMoves;
+    protected String   lastMove;
+    protected String   secondLastMove;
+    protected Map      map;
 
     // Constructor:
     public Robot(String name, String color, Spot location, String facingDirection, Integer numberofMoves, Map map) {
@@ -75,6 +75,19 @@ class Robot {
             return "error";
 
         }
+    }
+
+    public void checkk() {
+
+        if (mainApp.solved = checkWin() == true) {
+            System.out.println("You WIN!!!!!!!!!!!");
+            return;
+        } else {
+            
+            
+            
+        }
+
     }
 
     public void decide() {

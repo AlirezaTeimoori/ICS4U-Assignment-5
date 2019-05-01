@@ -15,22 +15,21 @@
 //-- object from other classes in app. --
 //---------------------------------------
 
-import java.util.Scanner;
 import java.io.*;
 
 class Map {
 
     // Intro Fields:
-    Spot[][] mapArray;
-    Spot startPoint;
-    Spot endPoint;
-    int numberOfLines = 0;
-    int numberOfChars = 0;
+    protected Spot[][] mapArray;
+    protected Spot startPoint;
+    protected Spot endPoint;
+    protected int numberOfLines = 0;
+    protected int numberOfChars = 0;
 
-    static FileReader filereader;
-    static BufferedReader reader;
-    static FileWriter filewriter;
-    static PrintWriter prtwriter;
+    protected static FileReader filereader;
+    protected static BufferedReader reader;
+    protected static FileWriter filewriter;
+    protected static PrintWriter prtwriter;
     static {
         try {
             filereader = new FileReader("./Test Cases/Test 2.txt");
@@ -42,7 +41,6 @@ class Map {
             throw new ExceptionInInitializerError(e.getMessage());
         }
     }
-    static Scanner scanner = new Scanner(filereader);
 
 
     // public Map (Spot[][] array) {

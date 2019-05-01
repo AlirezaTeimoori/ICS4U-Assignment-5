@@ -19,10 +19,10 @@ import java.io.*;
 class mainApp {
 
     // Instantiations:
-    static FileReader filereader;
-    static BufferedReader reader;
-    static FileWriter filewriter;
-    static PrintWriter prtwriter;
+    protected static FileReader filereader;
+    protected static BufferedReader reader;
+    protected static FileWriter filewriter;
+    protected static PrintWriter prtwriter;
     static {
 
         try {
@@ -39,13 +39,13 @@ class mainApp {
         }
     }
 
-    static Scanner scanner = new Scanner(filereader);
-    static int numberOfLines = 0;
-    static int numberOfChars = 0;
+    protected static Scanner scanner = new Scanner(filereader);
+    protected static int numberOfLines = 0;
+    protected static int numberOfChars = 0;
 
-    static Map map = new Map();
-    static Robot bot;
-    static boolean solved = false;
+    protected static Map map = new Map();
+    protected static Robot bot;
+    protected static boolean solved = false;
 
     public static void main(String[] args) throws IOException {
         
